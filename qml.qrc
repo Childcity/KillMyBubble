@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/bubble.png</file>
+        <file>Bubble.qml</file>
+        <file>game.qml</file>
+        <file>GameOverInfo.qml</file>
+        <file>ScoreInfo.qml</file>
+    </qresource>
+</RCC>
