@@ -98,6 +98,6 @@ Window {
     }
 
     Component.onDestruction: {
-        gameController.changeGameState(0)
+        gameController.changeGameState(GameplayController.Stopped)
     }
 }
