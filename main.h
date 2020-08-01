@@ -8,7 +8,6 @@
 struct DebugPrinter {
     const char *file;
     int line;
-    QByteArray msg;
 
     DebugPrinter(const char *file_, int line_)
         : file(file_), line(line_)
@@ -22,6 +21,6 @@ struct DebugPrinter {
 };
 
 #define DEBUGGAM(msg_) qDebug() << DebugPrinter(__FILE__, __LINE__) << msg_ << "<"
-//#define DEBUGGAM // Off debug
+//#define DEBUGGAM(msg_) // Off debug
 
 #endif // MAIN_H
