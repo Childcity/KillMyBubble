@@ -1,2 +1,3 @@
 # KillMyBubble
-Game on qml + c++
+Simple game on based on QML + C++
+
