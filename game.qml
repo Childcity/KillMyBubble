@@ -6,6 +6,8 @@ import GameplayController 1.0
 Window {
     title: qsTr("Kill [My] Bubble 🎈")
     id: wnd
+    minimumWidth: gameOverText.visible ? gameOverText.implicitWidth : score.implicitWidth
+    minimumHeight: gameOverText.visible ? gameOverText.implicitHeight : score.implicitHeight
     width: 480
     height: 480
     visible: true

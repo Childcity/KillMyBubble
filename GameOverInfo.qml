@@ -2,8 +2,8 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 
 Rectangle {
-    width: txt.contentWidth + 20
-    height: txt.contentHeight + 20
+    implicitWidth: txt.contentWidth + 20
+    implicitHeight: txt.contentHeight + 20
     radius: 15
     border {
         width: 3
