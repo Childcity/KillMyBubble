@@ -2,8 +2,9 @@
 Simple game on based on QML + C++
 
 
-### WIN32 build
-You can download WIN32 build [here](./build_win_x32)
+### Prebuilded executables
+You can download WIN32 build [here](./build/win_x32)
+You can download LINUX build [here](./build/linux_x64)
 
 ### Demonstration of working application
 <p align="center">
