@@ -58,6 +58,8 @@ public slots:
 
     void setIsCurrentlyKilled(bool isCurrentlyKilled);
 
+    void reset();
+
 signals:
     void posChanged(QPoint newPos);
 
@@ -68,11 +70,11 @@ signals:
     void reachedFinishTimesChanged(int reachedFinishTimes);
 
 private:
-    static constexpr double defaultSpeed = 1;
+    static constexpr double defaultSpeed_ = 1;
 
     QPoint pos_;
     QPoint dimension_;
-    double speed_ = defaultSpeed;
+    double speed_ = defaultSpeed_;
     int killedTimes_ = 0;
     int reachedFinishTimes_ = 0;
     bool isCurrentlyKilled_ = false;

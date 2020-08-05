@@ -84,7 +84,9 @@ void BubbleState::setKilledTimes(int killedTimes)
     if (killedTimes_ == killedTimes)
         return;
 
-    isCurrentlyKilled_ = true;
+    if(killedTimes > killedTimes_)
+        isCurrentlyKilled_ = true;
+
     killedTimes_ = killedTimes;
     emit killedTimesChanged(killedTimes_);
 }
@@ -111,4 +113,14 @@ void BubbleState::increaseReachedFinishTimes()
 void BubbleState::setIsCurrentlyKilled(bool isCurrentlyKilled)
 {
     isCurrentlyKilled_ = isCurrentlyKilled;
+}
+
+void BubbleState::reset()
+{
+    setPos({0, 0});
+    setDimension({0, 0});
+    setSpeed(defaultSpeed_);
+    setKilledTimes(0);
+    setReachedFinishTimes(0);
+    isCurrentlyKilled_ = false;
 }
