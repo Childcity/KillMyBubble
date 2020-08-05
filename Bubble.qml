@@ -29,6 +29,7 @@ Item {
         id: bubbleState
         dimension: Qt.point(root.width, root.height)
         onPosChanged: {
+            // arg1: newPos
             root.x = newPos.x
             root.y = newPos.y
         }
