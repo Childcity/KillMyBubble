@@ -8,6 +8,7 @@ Window {
     id: wnd
     minimumWidth: gameOverText.visible ? gameOverText.implicitWidth : score.implicitWidth
     minimumHeight: gameOverText.visible ? gameOverText.implicitHeight : score.implicitHeight
+    color: "#dff"
     width: 480
     height: 480
     visible: true
