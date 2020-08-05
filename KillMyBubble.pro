@@ -22,7 +22,7 @@ HEADERS += \
 SOURCES += \
     gameplaycontroller.cpp \
     bubblestate.cpp \
-    game.cpp
+	main.cpp
 
 Release:DESTDIR = release
 Release:OBJECTS_DIR = release/obj
