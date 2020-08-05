@@ -1,3 +1,5 @@
+VERSION = 1.1
+
 QT += quick
 CONFIG += c++17
 CONFIG += Release
