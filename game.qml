@@ -12,8 +12,8 @@ Window {
     height: 480
     visible: true
 
-    readonly property int bubbleHeight: 80
     readonly property int maxMissedBubbles: 20
+    readonly property int maxBubblesNumber: 5
     property int totalKilled: 0
     property int totalMissed: 0
 
@@ -25,11 +25,17 @@ Window {
 
     Repeater {
         id: bubbles
-        model: 5
+        model: maxBubblesNumber
+
         Bubble {
-            state.pos: Qt.point(index*100, wnd.height - bubbleHeight)
+            state.pos: getStartBubblePosByIndex(index)
             state.onKilledTimesChanged: totalKilled++
             state.onReachedFinishTimesChanged: {
+                // arg1: reachedFinishTimes
+                if (reachedFinishTimes <= 0) {
+                    return
+                }
+
                 if (totalMissed < maxMissedBubbles){
                     totalMissed++
                 }
@@ -47,6 +53,34 @@ Window {
         totalMissedInf: totalMissed
         anchors.centerIn: parent
         visible: false
+
+        MouseArea {
+            anchors.fill: parent
+            cursorShape: Qt.PointingHandCursor
+
+            onClicked: {
+                var oldDimensionJs = bubbles.itemAt(0).state.dimension
+                var oldDimensionPoint = Qt.point(oldDimensionJs.x, oldDimensionJs.y)
+                for (var i = 0; i < bubbles.count; ++i) {
+                    bubbles.itemAt(i).state.reset()
+                    bubbles.itemAt(i).state.setDimension(oldDimensionPoint)
+                    bubbles.itemAt(i).state.setPos(getStartBubblePosByIndex(i))
+                    bubbles.itemAt(i).visible = true
+                }
+
+                wnd.totalKilled = 0
+                wnd.totalMissed = 0
+
+                // Make visible score
+                score.visible = true
+
+                // Make visible GameOver text
+                gameOverText.visible = false
+
+                // Start game
+                gameController.changeGameState(GameplayController.Running)
+            }
+        }
     }
 
     function isGameOver() {
@@ -69,8 +103,14 @@ Window {
         gameOverText.visible = true
     }
 
+    function getStartBubblePosByIndex(index) {
+        var oneBubbleWidth = wnd.width / maxBubblesNumber
+        return Qt.point(index * oneBubbleWidth, wnd.height)
+    }
+
     GameplayController {
         id: gameController
+
         onGameStateChanged: {
             console.log("onGameStateChanged: ", gameState)
         }
