@@ -17,7 +17,7 @@ Item {
         color: "transparent"
 
         Image {
-            source: "img/bubble.png"
+            source: "../img/bubble.png"
             width: 130
             height: 130
             x: parent.x - 27
